@@ -4,11 +4,11 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import pickle
 
-st.title("Penguin Classifier: A Machine Learning App")
+st.title("Clasificador de pingüinos: una aplicación de aprendizaje de máquina")
 st.write(
-    "This app uses 6 inputs to predict the species of penguin using "
-    "a model built on the Palmer's Penguin's dataset. Use the form below"
-    " to get started!"
+    "Esta app usa seis inputs para predecir la especie de pingüinos, usando "
+    "un modelo construido en los datos de los pingüinos de Palmer. ¡Usa las opciones de abajo"
+    " para iniciar!"
 )
 
 penguin_df = pd.read_csv("penguins.csv")
@@ -59,19 +59,19 @@ new_prediction = rfc.predict(
 )
 prediction_species = unique_penguin_mapping[new_prediction][0]
 
-st.subheader("Predicting Your Penguin's Species:")
-st.write("We predict your penguin is of the {} species".format(prediction_species))
+st.subheader("Prediciendo la especie de tu pingüino:")
+st.write("Predecimos que tu pingüino es de la especie {} ".format(prediction_species))
 st.write(
-    "We used a machine learning (Random Forest) model to "
-    "predict the species, the features used in this prediction "
-    " are ranked by relative importance below."
+    "Usamos un modelo de aprendizaje de máquina (Random Forest) para "
+    "predecir la especie, las características que se usan en esta predicción "
+    "se ordenan por importancia relativa abajo."
 )
 st.image("feature_importance.png")
 
 st.write(
-    "Below are the histograms for each continuous variable"
-    "separated by penguin species. The vertical line "
-    "represents your the inputted value."
+    "Abajo se encuentran los histogramas para cada variable continua"
+    " seperados por la especie del pingüino. La línea vertical "
+    "representa el valor que tu colocaste."
 )
 
 fig, ax = plt.subplots()
