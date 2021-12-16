@@ -35,7 +35,7 @@ with st.form("user_input"):
     bill_depth = st.number_input("Profundidad del pico (mm)", min_value=0)
     flipper_length = st.number_input("Longitud de la aleta (mm)", min_value=0)
     body_mass = st.number_input("Masa corporal (g)", min_value=0)
-    st.form_submit_button()
+    st.form_submit_button("Enviar")
 
 island_biscoe, island_dream, island_torgerson = 0, 0, 0
 if island == "Biscoe":
