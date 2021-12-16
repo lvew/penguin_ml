@@ -92,7 +92,7 @@ st.pyplot(ax)
 fig, ax = plt.subplots()
 ax = sns.displot(x=penguin_df["bill_depth_mm"], hue=penguin_df["species"])
 plt.axvline(bill_depth)
-plt.title("Profundidad del pico poe especie")
+plt.title("Profundidad del pico por especie")
 st.pyplot(ax)
 
 fig, ax = plt.subplots()
