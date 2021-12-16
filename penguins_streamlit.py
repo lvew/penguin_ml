@@ -3,6 +3,9 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
 import pickle
+from sklearn.metrics import accuracy_score
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 
 st.title("Clasificador de pingüinos: una aplicación de aprendizaje de máquina")
 st.write(
@@ -10,6 +13,12 @@ st.write(
     "un modelo construido en los datos de los pingüinos de Palmer. ¡Usa las opciones de abajo"
     " para iniciar!"
 )
+
+password_guess = st.text_input("¿Cuál es la contraseña?")
+if password_guess != st.secrets["password"]:
+    st.stop()
+
+penguin_file = st.file_uploader("Sube tus propios datos de pingüinos")
 
 penguin_df = pd.read_csv("penguins.csv")
 rf_pickle = open("random_forest_penguin.pickle", "rb")
@@ -20,8 +29,8 @@ rf_pickle.close()
 map_pickle.close()
 
 with st.form("user_input"):
-    island = st.selectbox("Penguin Island", options=["Biscoe", "Dream", "Torgerson"])
-    sex = st.selectbox("Sex", options=["Female", "Male"])
+    island = st.selectbox("Isla del pingüino", options=["Biscoe", "Dream", "Torgerson"])
+    sex = st.selectbox("Sexo", options=["Hembra", "Macho"])
     bill_length = st.number_input("Bill Length (mm)", min_value=0)
     bill_depth = st.number_input("Bill Depth (mm)", min_value=0)
     flipper_length = st.number_input("Flipper Length (mm)", min_value=0)
@@ -37,9 +46,9 @@ elif island == "Torgerson":
     island_torgerson = 1
 
 sex_female, sex_male = 0, 0
-if sex == "Female":
+if sex == "Hembra":
     sex_female = 1
-elif sex == "Male":
+elif sex == "Macho":
     sex_male = 1
 
 new_prediction = rfc.predict(
