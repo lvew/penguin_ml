@@ -14,9 +14,9 @@ st.write(
     " para iniciar!"
 )
 
-password_guess = st.text_input("¿Cuál es la contraseña?")
-if password_guess != st.secrets["password"]:
-    st.stop()
+# password_guess = st.text_input("¿Cuál es la contraseña?")
+# if password_guess != st.secrets["password"]:
+#    st.stop()
 
 penguin_file = st.file_uploader("Sube tus propios datos de pingüinos")
 
